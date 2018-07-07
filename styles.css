@@ -2,3 +2,86 @@
   margin: 0;
   padding: 0;
 }
+body {
+  display: grid;
+  font-family: 'Open Sans', sans serif;
+  grid-template-columns: repeat(2, 1fr);
+}
+.left-column {
+  grid-column: 1 / span 1;
+  background-color: #455A64;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.right-column {
+  background-color: #CFD8DC;
+  grid-column: 2 / span 1;
+}
+.left-content {
+  display: block;
+  margin: auto;
+  /*width: 100%;*/
+  /*border: solid;*/
+  text-align: center;
+}
+h1 {
+  color: #FFFFFF;
+  font-size: 3.8rem;
+}
+.logo {
+  height: 3.2rem;
+}
+
+input {
+  box-sizing: border-box;
+  display: block;
+  font-size: 2rem;
+  height: 3.2rem;
+  margin-top: 3rem;
+  width: 100%;
+/*  padding: .3rem;
+*/}
+.enter-button {
+  background-color: #FFC107;
+  border: none;
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  height: 3rem;
+  margin-top: 3rem;
+  width: 100%;
+
+}
+ul {
+  list-style-type: none;
+  
+}
+li {
+  background-color: #FFFFFF;
+  border: 1px solid #607DAB;
+  margin: 1rem;
+  padding: .5rem;
+}
+.read-button {
+  float: left;
+  background-color: transparent;
+}
+.delete-button {
+  float: right;
+  background-color: transparent;
+}
+.clearfix:after {
+  content: ' ';
+  display: table;
+  clear: both;
+}
+h3 {
+  margin: .25rem;
+}
+
+a {
+  margin-top: 1rem;
+}
