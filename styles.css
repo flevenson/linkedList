@@ -6,6 +6,7 @@ body {
   display: grid;
   font-family: 'Open Sans', sans serif;
   grid-template-columns: repeat(2, 1fr);
+  background-color: #CFD8DC;
 }
 .left-column {
   grid-column: 1 / span 1;
@@ -14,11 +15,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  position: fixed;
+  width: 50%;
 }
-
 .right-column {
-  background-color: #CFD8DC;
   grid-column: 2 / span 1;
 }
 .left-content {
@@ -35,7 +35,6 @@ h1 {
 .logo {
   height: 3.2rem;
 }
-
 input {
   box-sizing: border-box;
   display: block;
@@ -53,11 +52,9 @@ input {
   height: 3rem;
   margin-top: 3rem;
   width: 100%;
-
 }
 ul {
-  list-style-type: none;
-  
+  list-style-type: none;  
 }
 li {
   background-color: #FFFFFF;
@@ -81,7 +78,6 @@ li {
 h3 {
   margin: .25rem;
 }
-
 a {
   margin-top: 1rem;
 }
