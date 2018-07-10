@@ -66,7 +66,7 @@ function addCard() {
   <h3>${titleInput.value}</h3>
   <hr>
   <a href="${urlInput.value}" target="_blank">${urlInput.value}</a>
-  <hr>
+  <hr class="second">
     <div class="clearfix">
       <button class="read-button">Read</button><button class="delete-button">Delete</button>
     </div>`;
@@ -86,7 +86,7 @@ function updateCount() {
   console.log(readCount, cardCount, unreadCount)
 }
 
-function checkInput() {
+function checkInput(e) {
   event.preventDefault();
   if (titleInput.value.length > 0 && urlInput.value.length > 0) {
     enterButton.disabled = false;
@@ -94,6 +94,12 @@ function checkInput() {
     enterButton.disabled = true;
   }
 }; 
+
+function clearCards() {
+  if (event.target.className === "read") {
+    event.target.remove();
+  }
+};
 
 function wipeInput() {
   titleInput.value = '';
