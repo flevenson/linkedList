@@ -30,45 +30,63 @@ body {
 }
 h1 {
   color: #FFFFFF;
-  font-size: 3.8rem;
+  font-size: 3.7rem;
+  font-weight: 800!;
 }
 .logo {
   height: 3.2rem;
+  padding: 0 1rem;
 }
 input {
   box-sizing: border-box;
   display: block;
-  font-size: 2rem;
-  height: 3.2rem;
-  margin-top: 3rem;
+  font-size: 1.7rem;
+  height: 2.95rem;
+  margin-top: 3.44rem;
   width: 100%;
-/*  padding: .3rem;
-*/}
+  padding: .7rem;
+  font-weight: 350;
+  font-family: 'Open Sans', sans serif;
+}
+::placeholder{
+  color: #BBBDBF;
+  }
 .enter-button {
   background-color: #FFC107;
   border: none;
   color: #FFFFFF;
   font-size: 1.5rem;
-  height: 3rem;
-  margin-top: 3rem;
+  height: 2.5rem;
+  margin-top: 3.5rem;
   width: 100%;
+}
+.title-input{
+  margin-top: 3rem;
 }
 ul {
   list-style-type: none;  
 }
 li {
   background-color: #FFFFFF;
-  border: 1px solid #607DAB;
-  margin: 1rem;
-  padding: .5rem;
+  border: 1.5px solid #607DAB;
+  margin: 1.3rem;
+  padding: .7rem;
+  height: 8.6rem;
 }
 .read-button {
   float: left;
   background-color: transparent;
+  border-width: 0 0 1px 0;
+  color: #455A64;
+  border-color: #F2F4F4;
 }
 .delete-button {
   float: right;
   background-color: transparent;
+  border-width: 0 0 1px 0;
+  color: #455A64;
+  border-color: #F2F4F4;
+
 }
 .clearfix:after {
   content: ' ';
@@ -76,8 +94,24 @@ li {
   clear: both;
 }
 h3 {
-  margin: .25rem;
+  margin: -.2rem .25rem;
+  color: #455A64;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+hr{
+  margin: .4em .3rem;
+  margin-bottom: 1rem;
+  color: #CFD8DC;
+  border-style: solid;
 }
 a {
-  margin-top: 1rem;
+  margin: .3rem;
+  font-size: 1.3rem;
+  color: #607D8B;
+  text-decoration: #F2F4F4 underline;
+}
+
+.read {
+
 }
