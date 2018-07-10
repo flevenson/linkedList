@@ -2,22 +2,17 @@
 // GLOBAL VARIABLES
 // =====================================================
 
-// user input
 var titleInput = document.querySelector('.title-input');
 var urlInput = document.querySelector('.url-input');
-// buttons
 var enterButton = document.querySelector('.enter-button');
 var readButton = document.querySelector('.read-button');
-// alerts
 var errorUserAlert = document.querySelector('.error-alert');
-// cards
 var cardUl = document.querySelector('.card-ul')
 var cardCount = 0;
-// refactor function for read to count number of li's with class read
 var readCount = 0;
 var unreadCount = cardCount - readCount;
 
-// titleInput.focus();
+titleInput.focus();
 
 
 // =====================================================
@@ -31,60 +26,28 @@ urlInput.addEventListener('keyup', checkInput);
 enterButton.addEventListener('click', function(event) {
   event.preventDefault();
   addCard();
-  // errorAlert();
-  titleInput.value = '';
-  urlInput.value = ''; 
-  titleInput.focus();         
+  errorAlert();
+  wipeInput();        
 });
 
 cardUl.addEventListener('click', function(event) {
-  
   if (event.target.className === "delete-button") {
     event.target.parentNode.parentNode.remove()
+    cardCount -= 1;
+    updateCount();
   }
 });
 
-// add css to make read button 'red' when class is read
-
 cardUl.addEventListener('click', function(event) {
-  
   if (event.target.className === "read-button") {
     event.target.parentNode.parentNode.classList.toggle("read");
+    updateCount();
   }
 });
 
 // =====================================================
 // FUNCTIONS
 // =====================================================
-
-function addCard() {
-  var cardItem = document.createElement('li');
-  cardItem.innerHTML = `
-  <h3>${titleInput.value}</h3>
-  <hr>
-  <a>${urlInput.value}</a>
-  <hr>
-    <div class="clearfix">
-      <button class="read-button">Read</button><button class="delete-button">Delete</button>
-    </div>`;
-  cardUl.prepend(cardItem);
-  cardCount += 1;
-};
-
-// function errorAlert() {
-//   if (titleInput.value.length === 0 || urlInput.value.length === 0) {
-//     errorUserAlert.innerText = 'Please enter a website title and website url'; 
-//   }
-// };
-
-function checkInput() {
-  event.preventDefault();
-  if (titleInput.value.length > 0 && urlInput.value.length > 0) {
-    enterButton.disabled = false;
-  } else {
-    enterButton.disabled = true;
-  }
-}; 
 
 // rewrite regexp
 // function verifyUrl() {
@@ -95,3 +58,44 @@ function checkInput() {
 //     return false;
 //   }
 // }
+
+function addCard() {
+  var cardItem = document.createElement('li');
+  cardItem.innerHTML = `
+  <h3>${titleInput.value}</h3>
+  <hr>
+  <a href="${urlInput.value}" target="_blank">${urlInput.value}</a>
+  <hr>
+    <div class="clearfix">
+      <button class="read-button">Read</button><button class="delete-button">Delete</button>
+    </div>`;
+  cardUl.prepend(cardItem);
+  cardCount += 1;
+};
+
+function errorAlert() {
+  if (titleInput.value.length === 0 || urlInput.value.length === 0) {
+    errorUserAlert.innerText = 'Please enter a website title and website url'; 
+  }
+};
+
+function updateCount() {
+  readCount = document.getElementsByClassName("read").length;
+  unreadCount = cardCount - readCount;
+  console.log(readCount, cardCount, unreadCount)
+}
+
+function checkInput() {
+  event.preventDefault();
+  if (titleInput.value.length > 0 && urlInput.value.length > 0) {
+    enterButton.disabled = false;
+  } else {
+    enterButton.disabled = true;
+  }
+}; 
+
+function wipeInput() {
+  titleInput.value = '';
+  urlInput.value = ''; 
+  titleInput.focus();
+}
