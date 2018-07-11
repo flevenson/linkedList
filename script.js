@@ -7,6 +7,7 @@ var urlInput = document.querySelector('.url-input');
 var enterButton = document.querySelector('.enter-button');
 var readButton = document.querySelector('.read-button');
 var errorUserAlert = document.querySelector('.error-alert');
+var resetButton = document.querySelector('.reset-button');
 var cardUl = document.querySelector('.card-ul')
 var cardCount = 0;
 var readCount = 0;
@@ -45,11 +46,24 @@ cardUl.addEventListener('click', function(event) {
 });
 
 cardUl.addEventListener('click', function(event) {
-  if (event.target.className === "read-button") {
-    event.target.parentNode.parentNode.classList.toggle("read");
+  if (event.target.className === "read-button" || event.target.className === "read-button read") {
+    // console.log(this);
+    event.target.parentNode.parentNode.classList.toggle("read-li");
+    event.target.classList.toggle("read");
     updateCount();
   }
 });
+
+// function clearCards() {
+//   if (event.target.className === "read-li") {
+//     event.target.remove();
+//   }
+// };
+
+// resetButton.addEventListener('click', function(e) {
+//   e.preventDefault();
+//   clearCards();
+// })
 
 // =====================================================
 // FUNCTIONS
@@ -72,6 +86,7 @@ function addCard() {
     </div>`;
   cardUl.prepend(cardItem);
   cardCount += 1;
+  updateCount();
 };
 
 function errorAlert() {
@@ -84,7 +99,19 @@ function updateCount() {
   readCount = document.getElementsByClassName("read").length;
   unreadCount = cardCount - readCount;
   console.log(readCount, cardCount, unreadCount)
+  userUpdateCount();
 }
+
+function userUpdateCount() {
+  var userCardCount = document.querySelector('.bookmarks');
+  userCardCount.innerText = cardCount
+
+  var userReadCount = document.querySelector('.read-links');
+  userReadCount.innerText = readCount
+
+  var userUnreadCount = document.querySelector('.unread-links');
+  userUnreadCount.innerText = unreadCount
+};
 
 function checkInput(e) {
   event.preventDefault();
@@ -94,12 +121,6 @@ function checkInput(e) {
     enterButton.disabled = true;
   }
 }; 
-
-function clearCards() {
-  if (event.target.className === "read") {
-    event.target.remove();
-  }
-};
 
 function wipeInput() {
   titleInput.value = '';
