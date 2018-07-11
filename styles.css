@@ -24,17 +24,15 @@ body {
 .left-content {
   display: block;
   margin: auto;
-  /*width: 100%;*/
-  /*border: solid;*/
   text-align: center;
 }
 h1 {
   color: #FFFFFF;
   font-size: 4.5rem;
-  font-weight: 800!;
+  font-weight: 800;
 }
 .logo {
-  height: 4rem;
+  height: 3.5rem;
   padding: 0 1.2rem;
 }
 input {
@@ -59,6 +57,49 @@ input {
   height: 3.18rem;
   margin-top: 4.65rem;
   width: 100%;
+  cursor: pointer;
+}
+.enter-button:hover {
+  background-color: #FFD773;
+}
+.user-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4.5rem;
+}
+.stats-cont {
+ /* margin: 1.5rem 3.5rem;*/
+}
+.bookmarks, .read-links, .unread-links {
+  color: #CFD8DC;
+  font-size: 8rem;
+  font-weight: 300;
+  opacity: .75;
+}
+.read-links {
+  margin-top: 1.39rem;
+}
+.stats-title {
+  color: #CFD8DC;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 0;
+  margin-bottom: .5rem;
+  opacity: .75;
+}
+.reset-button {
+  /*display: none;*/
+  color: #CFD8DC;
+  font-size: .75rem;
+  font-weight: 300;
+  text-decoration: none;
+  letter-spacing: .05rem
+  cursor: pointer;
+}
+.reset-button:hover {
+  color: #F05A28;
+  font-weight: 300;
 }
 .title-input{
   margin-top: 4rem;
@@ -66,13 +107,12 @@ input {
 .url-input{
   margin-top: 4.3rem;
 }
-
 ul {
   list-style-type: none;  
 }
 li {
   background-color: #FFFFFF;
-  border: 1.5px solid #607DAB;
+  border: 1.5px solid #607D8B;
   margin: 1.7rem;
   margin-bottom: 2.3rem;
   padding: .7rem;
@@ -89,6 +129,7 @@ li {
   font-weight: 200;
   margin-left: .7rem;
   outline: none;
+  cursor: pointer;
 }
 .delete-button {
   float: right;
@@ -101,6 +142,7 @@ li {
   font-weight: 200;
   margin-right: .7rem;
   outline: none;
+  cursor: pointer;
 }
 .clearfix:after {
   content: ' ';
@@ -112,6 +154,7 @@ h3 {
   color: #455A64;
   font-weight: 600;
   font-size: 2.2rem;
+  padding-left: .5rem;
 }
 hr{
   margin: .8rem .3rem;
@@ -123,17 +166,20 @@ hr{
   margin-top: 1.5rem;
   margin-bottom: .4rem;
 }
-a {
+.link {
   margin: .3rem;
   font-size: 1.65rem;
   color: #607D8B;
+  padding-left: .5rem;
   text-decoration: #F2F4F4 underline;
 }
-
-.read {
- color: red;
+a:hover {
+  font-weight: 800;
 }
-
+.read {
+ color: #F05A28;
+ font-weight: 800;
+}
 .read-li {
- background-color: gray;
+ background-color: #F2F4F4;
 }

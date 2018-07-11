@@ -1,6 +1,5 @@
-// =====================================================
-// GLOBAL VARIABLES
-// =====================================================
+$(document).ready(function() {
+});
 
 var titleInput = document.querySelector('.title-input');
 var urlInput = document.querySelector('.url-input');
@@ -14,18 +13,17 @@ var readCount = 0;
 var unreadCount = cardCount - readCount;
 
 titleInput.focus();
-
-
-// =====================================================
-// EVENT LISTENERS
-// =====================================================
-
+$(".user-stats").hide();
 
 titleInput.addEventListener('keyup', checkInput);
 urlInput.addEventListener('keyup', checkInput);
+enterButton.addEventListener('click', enterInput)
+cardUl.addEventListener('click', deleteCard)
+cardUl.addEventListener('click', readCard)
+resetButton.addEventListener('click', clearRead)
 
 
-enterButton.addEventListener('click', function(event) {
+function enterInput(event) {
   event.preventDefault();
   if (validateURL() == true) {
     addCard();
@@ -35,59 +33,12 @@ enterButton.addEventListener('click', function(event) {
     urlInput.value = '';
     urlInput.focus();
   }     
-});
-
-cardUl.addEventListener('click', function(event) {
-  if (event.target.className === "delete-button") {
-    event.target.parentNode.parentNode.remove()
-    cardCount -= 1;
-    updateCount();
-  }
-});
-
-cardUl.addEventListener('click', function(event) {
-  if (event.target.className === "read-button" || event.target.className === "read-button read") {
-    // console.log(this);
-    event.target.parentNode.parentNode.classList.toggle("read-li");
-    event.target.classList.toggle("read");
-    updateCount();
-  }
-});
-
-// function clearCards() {
-//   if (event.target.className === "read-li") {
-//     event.target.remove();
-//   }
-// };
-
-// resetButton.addEventListener('click', function(e) {
-//   e.preventDefault();
-//   clearCards();
-// })
-
-// =====================================================
-// FUNCTIONS
-// =====================================================
+};
 
 function validateURL() {
     var urlregex = /^(https?|ftp):\/\/([a-zA-Z0-9.-]+(:[a-zA-Z0-9.&%$-]+)*@)*((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3}|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(:[0-9]+)*(\/($|[a-zA-Z0-9.,?'\\+&%$#=~_-]+))*$/;
     return urlregex.test(urlInput.value);
 }
-
-function addCard() {
-  var cardItem = document.createElement('li');
-  cardItem.innerHTML = `
-  <h3>${titleInput.value}</h3>
-  <hr>
-  <a href="${urlInput.value}" target="_blank">${urlInput.value}</a>
-  <hr class="second">
-    <div class="clearfix">
-      <button class="read-button">Read</button><button class="delete-button">Delete</button>
-    </div>`;
-  cardUl.prepend(cardItem);
-  cardCount += 1;
-  updateCount();
-};
 
 function errorAlert() {
   if (titleInput.value.length === 0 || urlInput.value.length === 0) {
@@ -95,25 +46,57 @@ function errorAlert() {
   }
 };
 
+function addCard() {
+  var cardItem = document.createElement('li');
+  cardItem.innerHTML = `
+  <h3>${titleInput.value}</h3>
+  <hr>
+  <a class="link" href="${urlInput.value}" target="_blank">${urlInput.value}</a>
+  <hr class="second">
+    <div class="clearfix">
+      <button class="read-button">Read</button><button class="delete-button">Delete</button>
+    </div>`;
+  cardUl.prepend(cardItem);
+  cardCount += 1;
+  updateCount();
+  $(".user-stats").show();
+};
+
+function deleteCard(event) {
+  event.preventDefault();
+  if (event.target.className === "delete-button") {
+    event.target.parentNode.parentNode.remove()
+    cardCount -= 1;
+    updateCount();
+  }
+};
+
+function readCard(event) {
+  event.preventDefault();
+  if (event.target.className === "read-button" || event.target.className === "read-button read") {
+    event.target.parentNode.parentNode.classList.toggle("read-li");
+    event.target.classList.toggle("read");
+    updateCount();
+  }
+};
+
 function updateCount() {
+  cardCount = document.querySelectorAll('li').length;
   readCount = document.getElementsByClassName("read").length;
   unreadCount = cardCount - readCount;
-  console.log(readCount, cardCount, unreadCount)
   userUpdateCount();
 }
 
 function userUpdateCount() {
   var userCardCount = document.querySelector('.bookmarks');
   userCardCount.innerText = cardCount
-
   var userReadCount = document.querySelector('.read-links');
   userReadCount.innerText = readCount
-
   var userUnreadCount = document.querySelector('.unread-links');
   userUnreadCount.innerText = unreadCount
 };
 
-function checkInput(e) {
+function checkInput(event) {
   event.preventDefault();
   if (titleInput.value.length > 0 && urlInput.value.length > 0) {
     enterButton.disabled = false;
@@ -126,4 +109,14 @@ function wipeInput() {
   titleInput.value = '';
   urlInput.value = ''; 
   titleInput.focus();
-}
+};
+
+function clearRead(event) {
+  event.preventDefault();
+  var readCards = document.getElementsByClassName('read-li');
+  while (readCards.length > 0) {
+    readCards[0].parentNode.removeChild(readCards[0]);
+  }
+  updateCount();
+};
+

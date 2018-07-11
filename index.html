@@ -13,20 +13,30 @@
         <input class="url-input" placeholder="Website URL"/>
         <button class="enter-button">Enter</button>
         <p class="error-alert"></p>
-        <div>
-          <p class="bookmarks"></p>
-          <p class="read-links"></p>
-          <p class="unread-links"></p>
-          <button class="reset-button">Reset</button>
-        </div>
+        <section class="user-stats">
+          <div class="stats-cont">
+            <p class="bookmarks"></p>
+            <p class="stats-title">Links</p>
+          </div>
+          <div class="stats-cont">
+            <p class="read-links"></p>
+            <div class="adjust">
+              <p class="stats-title">Read</p>
+              <a href="#" class="reset-button">(clear)</a> 
+            </div>
+          </div>
+          <div class="stats-cont">
+            <p class="unread-links"></p>
+            <p class="stats-title">Unread</p>
+          </div>
+        </section>
       </div>
     </form>
     <output class="right-column">
       <ul class="card-ul">
       </ul>
     </output>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="script.js"></script>
   </body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="script.js"></script>
-  <!-- <script src="script.js"></script> -->
 </html>
