@@ -85,6 +85,7 @@ function updateCount() {
   readCount = document.getElementsByClassName("read").length;
   unreadCount = cardCount - readCount;
   userUpdateCount();
+  hideStats();
 }
 
 function userUpdateCount() {
@@ -119,4 +120,12 @@ function clearRead(event) {
   }
   updateCount();
 };
+
+function hideStats() {
+  if (cardCount == 0) {
+    $(".user-stats").hide();
+  } else {
+    $(".user-stats").show();
+  }
+}
 
